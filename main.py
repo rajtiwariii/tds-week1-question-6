@@ -17,6 +17,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def read_root():
+    return {"status": "running", "endpoint": "/effective-config"}
+
 def coerce_value(key: str, value):
     if key in ["port", "workers"]:
         try:
